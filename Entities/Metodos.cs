@@ -14,7 +14,6 @@ namespace ColConsultas.Entities
       //public int menu() se puede llamar fuera de la clase y retorna dependiendo del tipo de dato que sea el metodo 
 
         //Estudiante est = new Estudiante();
-
         Data datos = new Data();
         public int Menu()
         {
@@ -22,11 +21,16 @@ namespace ColConsultas.Entities
            "\n2.Ver lista de materias" +
            "\n3.Ver Materias de cada estudiante" +
            "\n4.Salir del programa");
-
-
             Console.Write("Ingrese la opcion que desea realizar :");
-            int opc = Convert.ToInt32(Console.ReadLine());
-            return opc;
+            try
+            {
+                int opc = Convert.ToInt32(Console.ReadLine());
+                return opc;
+            }
+            catch (Exception e)
+            {
+                return 0;
+            }
         }
 
         public void ObtenerEstudiantes()
@@ -55,21 +59,53 @@ namespace ColConsultas.Entities
         {
 
             Console.Clear();
-            var MatEstu = (from  esma in datos.LsEstudianteMaterias 
-            join mat in datos.Materias on esma.IdMateriaFk equals mat.Id
-            join est in datos.LsEstudiantes on esma.IdEstudianteFk equals est.Id
-            select new {
-                Cedula = est.Identificacion,
-                NombreEstudiante = est.Nombre,
-                Asignatura = mat.NombreMateria,
-                Peso = mat.Creditos
+            var MatEstu = (from esma in datos.LsEstudianteMaterias
+                           join mat in datos.Materias on esma.IdMateriaFk equals mat.Id
+                           join est in datos.LsEstudiantes on esma.IdEstudianteFk equals est.Id
+                           select new
+                           {
+                               Cedula = est.Identificacion,
+                               NombreEstudiante = est.Nombre,
+                               Asignatura = mat.NombreMateria,
+                               Peso = mat.Creditos
 
-            }).ToList();
-            
+                           }).ToList();
+
 
             System.Console.WriteLine("Materias de Estudiante\n");
             MatEstu.ForEach(x => System.Console.WriteLine($"{x.Cedula}--{x.NombreEstudiante}--{x.Asignatura}--{x.Peso}"));
 
+        }
+
+        public static void MenuCreacion()
+        {
+            Console.Clear();
+            Console.WriteLine("\nMenu De Creacion \n" +
+            "\n1.Crear estudiantes" +
+                      "\n2.Crear Materias" +
+                      "\n3.Volver");
+        }
+
+        public void CrearEstudiante(int opc)
+        {
+            bool flag = true;
+            MenuCreacion();
+            while (flag)
+            {
+                switch (opc)
+                {
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    default:
+                        System.Console.WriteLine("Ingrese Datos Validos");
+                        break;
+
+                }
+            }
         }
     }
 }

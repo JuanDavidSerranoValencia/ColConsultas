@@ -23,6 +23,9 @@ internal class Program
                     System.Console.WriteLine("Saliendo del programa");
                     flag = false;
                     break;
+                default:
+                    System.Console.WriteLine("Ingrese una opcion valida");
+                    break;
             }
 
         }
