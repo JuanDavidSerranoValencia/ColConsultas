@@ -10,18 +10,6 @@ namespace ColConsultas.Entities
         public string NombreMateria { get; set; }
         public int Creditos { get; set; }
 
-        List<Materia> Materias = new List<Materia>(){
-            new Materia(){
-                Id =1,
-                NombreMateria = "Matematicas",
-                Creditos=4
-            },
-               new Materia(){
-                Id =2,
-                NombreMateria = "Filosofia",
-                Creditos=2
-            }
-
-        };
+  
     }
 }

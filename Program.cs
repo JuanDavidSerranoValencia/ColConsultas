@@ -6,16 +6,21 @@ internal class Program
     {
         Metodos me = new Metodos();
         bool flag = true;
-        Console.ForegroundColor = ConsoleColor.Green;
         while (flag)
         {
             switch (me.Menu())
             {
                 case 1:
-                System.Console.WriteLine("Opcion 1");
+                    me.ObtenerEstudiantes();
                     break;
                 case 2:
-                System.Console.WriteLine("Saliendo del programa");
+                    me.ObtenerMaterias();
+                    break;
+                case 3:
+                    me.MateriasEstudiantes();
+                    break;
+                case 4:
+                    System.Console.WriteLine("Saliendo del programa");
                     flag = false;
                     break;
             }
